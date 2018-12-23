@@ -1,0 +1,65 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Portfolio
+{% endblock %}
+
+{% block main %}
+<div class="row">
+    <div class="col-sm-12">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Symbol</th>
+                    <th>Name</th>
+                    <th>No. of Shares</th>
+                    <th>Price</th>
+                    <th>TOTAL</th>
+                    <th>Buy/SellI</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% set ttl = [0] %}
+                {% for stock in stocksowned %}
+                <tr>
+                    <td>{{ stock["symbol"] }}</td>
+                    <td>{{ stock["name"] }}</td>
+                    <td>{{ stock["quantityheld"] }}</td>
+                    {% for stockinfo in stocksinfo if stockinfo["symbol"] == stock["symbol"] %}
+                        {% if ttl.append(ttl.pop() + stock["quantityheld"]*stockinfo["price"]) %}{% endif %}
+                        <td>{{ "$ %.2f"|format(stockinfo["price"]) }}</td>
+                        <td>{{ "$ %.2f"|format(stock["quantityheld"]*stockinfo["price"]) }}</td>
+                    {% endfor %}
+                    <td>
+                        <form method="post">
+                            <div class="form-group">
+                                <input type="hidden" name="symbol" value={{ stock['symbol'] }}>
+                                <input autocomplete="off" autofocus class="form-control" name="quantity" placeholder="Number of Shares" type="number" min="1"/>
+                                <button class="btn btn-primary" type="submit" name="buy" formaction="/buy">Buy</button>
+                                <button class="btn btn-primary" type="submit" name="sell" formaction="/sell">Sell</button>
+                            </div>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+                <tr>
+                    <td>CASH</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>{{ "$ %.2f"|format(usercash) }}</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="font-weight-bold">{{ "$ %.2f"|format(ttl|sum() + usercash) }}</td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}
