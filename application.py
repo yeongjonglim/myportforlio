@@ -1,6 +1,6 @@
 import os
 
-from flask import Flask, flash, redirect, render_template, request, session
+from flask import Flask, flash, redirect, render_template, request, session, g
 from flask_session import Session
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.sql import text
@@ -212,6 +212,7 @@ def login():
 
         # Remember which user has logged in
         session["user_id"] = userin.uid
+        g.user_id = session["user_id"]
 
         # Redirect user to home page
         return redirect("/")
