@@ -68,7 +68,7 @@ def checkpwstr(pw):
             number = number + 1
         elif any((s in symb) for s in pw):
             symbol = symbol + 1
-    if letter > 0 and number > 0 and len(pw) > 8:
+    if letter > 0 and number > 0 and len(pw) >= 8:
         return True
     else:
         return False
