@@ -36,7 +36,7 @@ app.config["SESSION_TYPE"] = "filesystem"
 app.config["DEBUG"] = False
 app.config["TESTING"] = False
 app.config["SECRET_KEY"] = os.urandom(24)
-app.config["SESSION_NAME"] = 'session name'
+#app.config["SESSION_NAME"] = 'session name'
 app.secret_key = '\xda\x1d\xc8y\xc8\xcb5\xfb\xee\xc6r6\xe4\xfc\xc4\xa9\x16\x81\xf0v\xc6\ x86\xc3\x96'
 Session(app)
 
@@ -213,7 +213,7 @@ def login():
 
         # Remember which user has logged in
         session["user_id"] = userin.uid
-        #session.modified = True
+        session.permanent = True
 
         # Redirect user to home page
         return redirect("/")
