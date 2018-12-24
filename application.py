@@ -36,6 +36,7 @@ app.config["SESSION_TYPE"] = "filesystem"
 app.config["DEBUG"] = False
 app.config["TESTING"] = False
 app.config["SECRET_KEY"] = '\xda\x1d\xc8y\xc8\xcb5\xfb\xee\xc6r6\xe4\xfc\xc4\xa9\x16\x81\xf0v\xc6\x86\xc3\x96'
+app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
 Session(app)
 
 # Change configuration to connect to new database (SQLAchemy)
@@ -225,7 +226,7 @@ def logout():
     """Log user out"""
 
     # Forget any user_id
-    session.clear()
+    session.pop(session.get('user_id'), None)
 
     # Redirect user to login form
     return redirect("/login")
