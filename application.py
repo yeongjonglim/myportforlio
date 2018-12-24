@@ -33,6 +33,9 @@ app.jinja_env.filters["usd"] = usd
 app.config["SESSION_FILE_DIR"] = mkdtemp()
 app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
+app.config["DEBUG"] = False
+app.config["TESTING"] = False
+app.config["SECRET_KEY"] = os.urandom(24)
 Session(app)
 
 # Change configuration to connect to new database (SQLAchemy)
