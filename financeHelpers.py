@@ -38,6 +38,7 @@ def login_required(f):
         #    return redirect("/login")
 
         if session.get('user_id') is None:
+            print("login session missing...")
             return redirect("/login")
         return f(*args, **kwargs)
     return decorated_function
