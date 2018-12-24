@@ -28,6 +28,15 @@ def login_required(f):
     """
     @wraps(f)
     def decorated_function(*args, **kwargs):
+        #u = request.cookies.get('user')
+        #a = request.cookies.get('auth')
+        #if not a:
+        #    if u in session:
+        #        session.pop(u)
+        #    resp.set_cookie('user', max_age=0)
+        #    resp.set_cookie('auth', max_age=0)
+        #    return redirect("/login")
+
         if session.get('user_id') is None:
             return redirect("/login")
         return f(*args, **kwargs)
