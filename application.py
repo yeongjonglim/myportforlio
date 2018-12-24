@@ -35,7 +35,7 @@ app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
 app.config["DEBUG"] = False
 app.config["TESTING"] = False
-app.config["SECRET_KEY"] = os.urandom(24)
+app.config["SECRET_KEY"] = '\xda\x1d\xc8y\xc8\xcb5\xfb\xee\xc6r6\xe4\xfc\xc4\xa9\x16\x81\xf0v\xc6\x86\xc3\x96'
 Session(app)
 
 # Change configuration to connect to new database (SQLAchemy)
