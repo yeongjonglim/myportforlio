@@ -213,7 +213,7 @@ def login():
 
         # Remember which user has logged in
         session["user_id"] = userin.uid
-        print("Logging in user id: "+session.get("user_id"))
+        print("Logging in user id: "+str(session.get('user_id')))
         session.permanent = True
 
         # Redirect user to home page
