@@ -16,7 +16,7 @@ from financeHelpers import apology, login_required, lookup, usd, checkpwstr
 app = Flask(__name__)
 
 # Ensure templates are auto-reloaded
-#app.config["TEMPLATES_AUTO_RELOAD"] = True
+app.config["TEMPLATES_AUTO_RELOAD"] = True
 
 # Ensure responses aren't cached
 @app.after_request
@@ -30,7 +30,6 @@ def after_request(response):
 app.jinja_env.filters["usd"] = usd
 
 # Configure session to use filesystem (instead of signed cookies)
-#app.config["SESSION_FILE_DIR"] = mkdtemp()
 #app.config["SESSION_PERMANENT"] = True
 app.config["SESSION_TYPE"] = "filesystem"
 app.config["DEBUG"] = True
