@@ -30,9 +30,9 @@ def after_request(response):
 app.jinja_env.filters["usd"] = usd
 
 # Configure session to use filesystem (instead of signed cookies)
-app.config["SESSION_FILE_DIR"] = mkdtemp()
+#app.config["SESSION_FILE_DIR"] = mkdtemp()
 app.config["SESSION_PERMANENT"] = True
-app.config["SESSION_TYPE"] = "filesystem"
+#app.config["SESSION_TYPE"] = "filesystem"
 app.config["DEBUG"] = True
 #app.config["TESTING"] = False
 app.config["SECRET_KEY"] = '\xc9\xe5\x14\x10\xa6\x18\xbedWpa\x08\x94@\x87:\x14\xc0\x90\x04\xbe\x82\x9b\x85'
