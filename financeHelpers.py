@@ -37,8 +37,8 @@ def login_required(f):
         #    resp.set_cookie('auth', max_age=0)
         #    return redirect("/login")
 
-        #if session.get('user_id') is None:
-        #    print("login session missing...")
+        if session.get('user_id') is None:
+            print("login session missing...")
         #    return redirect("/login")
         return f(*args, **kwargs)
     return decorated_function
