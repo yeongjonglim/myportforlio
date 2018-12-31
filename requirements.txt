@@ -1,7 +1,6 @@
 certifi==2018.11.29
 chardet==3.0.4
 Click==7.0
-cs50==2.4.4
 feedparser==5.2.1
 Flask==1.0.2
 Flask-Session==0.3.1

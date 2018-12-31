@@ -5,7 +5,6 @@ from flask_session import Session
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.sql import text
 from sqlalchemy_views import CreateView
-from tempfile import mkdtemp
 from werkzeug.exceptions import default_exceptions
 from werkzeug.security import check_password_hash, generate_password_hash
 from datetime import datetime
@@ -32,7 +31,7 @@ app.jinja_env.filters["usd"] = usd
 # Configure session to use filesystem (instead of signed cookies)
 #app.config["SESSION_PERMANENT"] = True
 app.config["SESSION_TYPE"] = "filesystem"
-app.config["DEBUG"] = True
+app.config["DEBUG"] = False
 #app.config["TESTING"] = False
 app.config["SECRET_KEY"] = '\xda\x1d\xc8y\xc8\xcb5\xfb\xee\xc6r6\xe4\xfc\xc4\xa9\x16\x81\xf0v\xc6\x86\xc3\ x96'
 app.config['SESSION_COOKIE_NAME'] = 'heroku_session'
